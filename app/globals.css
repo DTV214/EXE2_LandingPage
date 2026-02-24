@@ -1,26 +1,155 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-be-vietnam);
   --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.75rem;
+
+  /* TÔNG MÀU MỚI: XANH TƯƠI SÁNG & TRONG TRẺO */
+  --background: #FCFDFB;
+  /* Trắng sáng pha ánh xanh cực nhẹ */
+  --foreground: #3C5A38;
+  /* Xanh lục bảo đậm (Giúp chữ siêu nét) */
+
+  --card: #FFFFFF;
+  --card-foreground: #3C5A38;
+
+  --popover: #FFFFFF;
+  --popover-foreground: #3C5A38;
+
+  --primary: #84CC70;
+  /* Xanh lá non tươi sáng rực rỡ */
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #EAF4E5;
+  /* Xanh mint cực nhạt làm nền phụ */
+  --secondary-foreground: #2C4A28;
+
+  --muted: #F0F5EC;
+  --muted-foreground: #799E73;
+  /* Xanh rêu nhạt cho text phụ */
+
+  --accent: #EAF4E5;
+  --accent-foreground: #3C5A38;
+
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+
+  --border: #DDE8D8;
+  /* Viền xanh rất nhạt */
+  --input: #DDE8D8;
+  --ring: #84CC70;
+  /* Khung focus màu xanh lá tươi */
+
+  /* Màu biểu đồ */
+  --chart-1: #84CC70;
+  --chart-2: #3C5A38;
+  --chart-3: #A3D993;
+  --chart-4: #C4E5B9;
+  --chart-5: #EAF4E5;
+
+  --sidebar: #FCFDFB;
+  --sidebar-foreground: #3C5A38;
+  --sidebar-primary: #84CC70;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #EAF4E5;
+  --sidebar-accent-foreground: #3C5A38;
+  --sidebar-border: #DDE8D8;
+  --sidebar-ring: #84CC70;
+}
+
+.dark {
+  /* Chế độ tối cũng được chỉnh cho "tươi" và rõ ràng hơn */
+  --background: #121C11;
+  /* Đen pha xanh rêu thẳm */
+  --foreground: #F0F5EC;
+  /* Chữ trắng ám xanh mint */
+
+  --card: #1A2619;
+  --card-foreground: #F0F5EC;
+
+  --popover: #1A2619;
+  --popover-foreground: #F0F5EC;
+
+  --primary: #84CC70;
+  --primary-foreground: #0A1409;
+  /* Chữ đen trên nền nút xanh cho nổi bật */
+
+  --secondary: #263B24;
+  --secondary-foreground: #F0F5EC;
+
+  --muted: #263B24;
+  --muted-foreground: #A3D993;
+
+  --accent: #263B24;
+  --accent-foreground: #F0F5EC;
+
+  --destructive: #7F1D1D;
+  --border: #263B24;
+  --input: #263B24;
+  --ring: #84CC70;
+
+  --sidebar: #121C11;
+  --sidebar-foreground: #F0F5EC;
+  --sidebar-primary: #84CC70;
+  --sidebar-primary-foreground: #0A1409;
+  --sidebar-accent: #263B24;
+  --sidebar-accent-foreground: #F0F5EC;
+  --sidebar-border: #263B24;
+  --sidebar-ring: #84CC70;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background text-foreground;
+  }
 }
