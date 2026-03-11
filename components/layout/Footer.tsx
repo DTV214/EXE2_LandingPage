@@ -36,8 +36,8 @@ const navLinks: FooterLink[] = [
 const supportLinks: FooterLink[] = [
   { name: "Điều khoản sử dụng", href: "#" },
   { name: "Chính sách bảo mật", href: "#" },
-  { name: "Câu hỏi thường gặp", href: "#faq" },
-  { name: "Liên hệ hỗ trợ", href: "#" },
+  { name: "Câu hỏi thường gặp", href: "/#faq" }, // Thêm dấu / để đảm bảo dù ở trang nào bấm cũng về đúng trang chủ
+  { name: "Yêu cầu xóa tài khoản", href: "/delete-account" }, // THÊM DÒNG NÀY ĐỂ LIÊN KẾT ĐẾN TRANG VỪA TẠO
 ];
 
 const socialLinks: SocialLink[] = [
@@ -174,7 +174,7 @@ export default function Footer() {
             className="px-6 py-2 rounded-full bg-white/40 backdrop-blur-md border border-white/60 shadow-sm flex items-center gap-2"
           >
             <p className="text-[#3C5A38] font-black text-[10px] uppercase tracking-widest">
-              Developed by <span className="text-primary">Xoài</span> with
+              Developed by <span className="text-primary">CUBE Team</span> with
             </p>
             <Heart
               size={14}
