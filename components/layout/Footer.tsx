@@ -34,10 +34,10 @@ const navLinks: FooterLink[] = [
 ];
 
 const supportLinks: FooterLink[] = [
-  { name: "Điều khoản sử dụng", href: "#" },
-  { name: "Chính sách bảo mật", href: "#" },
-  { name: "Câu hỏi thường gặp", href: "/#faq" }, // Thêm dấu / để đảm bảo dù ở trang nào bấm cũng về đúng trang chủ
-  { name: "Yêu cầu xóa tài khoản", href: "/delete-account" }, // THÊM DÒNG NÀY ĐỂ LIÊN KẾT ĐẾN TRANG VỪA TẠO
+  { name: "Điều khoản sử dụng", href: "/terms" },
+  { name: "Chính sách bảo mật", href: "/privacy" },
+  { name: "Quy tắc cộng đồng", href: "/guidelines" },
+  { name: "Yêu cầu xóa tài khoản", href: "/delete-account" },
 ];
 
 const socialLinks: SocialLink[] = [
