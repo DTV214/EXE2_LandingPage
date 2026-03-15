@@ -105,10 +105,14 @@ export default function CTA() {
               {/* Nút Tải APK: Glowing Animation */}
               <div className="relative group w-full sm:w-auto">
                 <div className="absolute -inset-1 bg-gradient-to-r from-secondary to-white rounded-full blur opacity-40 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
-                <button className="relative flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 bg-secondary text-secondary-foreground rounded-full font-bold text-lg hover:scale-105 transition-transform">
+                <a
+                  href="/downloads/LanhCare.apk"
+                  download="LanhCare.apk"
+                  className="relative flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 bg-secondary text-secondary-foreground rounded-full font-bold text-lg hover:scale-105 transition-transform"
+                >
                   <Download size={24} />
                   Tải APK Lành Care
-                </button>
+                </a>
               </div>
 
               {/* Nút Waitlist */}

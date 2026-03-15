@@ -96,9 +96,13 @@ export default function HeroBanner() {
                   </p>
 
                   <div className="flex items-center gap-4 mt-4">
-                    <button className="px-8 py-4 bg-primary text-primary-foreground rounded-full font-bold text-lg hover:bg-primary/90 transition-colors shadow-lg">
-                      Lắng nghe
-                    </button>
+                    <a
+                      href="/downloads/LanhCare.apk"
+                      download="LanhCare.apk"
+                      className="px-8 py-4 bg-primary text-white rounded-full font-bold text-lg hover:bg-primary/90 transition-colors shadow-lg text-center"
+                    >
+                      Tải App Lành Care
+                    </a>
                     <button className="px-8 py-4 bg-transparent text-white border border-white/30 rounded-full font-semibold text-lg hover:bg-white/10 transition-colors flex items-center gap-2">
                       Thấu hiểu <ArrowRight size={20} />
                     </button>

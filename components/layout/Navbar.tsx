@@ -1,10 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Smartphone, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
+import { Menu, Smartphone, Sparkles } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet"; // Thêm SheetClose
 
 // --- ĐỊNH NGHĨA TYPES ---
 interface NavLink {
@@ -14,6 +19,7 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
   { name: "Tính năng", href: "#features" },
+  { name: "AI Coach", href: "#ai-coach" }, // Bổ sung lại link AI Coach
   { name: "Cảm hứng", href: "#inspiration" },
   { name: "Câu chuyện", href: "#the-why" },
 ];
@@ -53,17 +59,20 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 h-full flex items-center justify-between">
-        {/* LOGO LÀNH CARE - Sắc nét hơn */}
+        {/* LOGO LÀNH CARE */}
         <motion.div
           whileHover={{ scale: 1.05 }}
           className="flex items-center gap-3 cursor-pointer group"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} // Bấm logo về đầu trang
         >
           <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20 transition-transform group-hover:rotate-12">
             <span className="text-white font-black text-xl italic">L</span>
           </div>
           <div className="flex flex-col">
             <span
-              className={`text-xl font-black tracking-tighter transition-colors ${isScrolled ? "text-[#3C5A38]" : "text-[#3C5A38]"}`}
+              className={`text-xl font-black tracking-tighter transition-colors ${
+                isScrolled ? "text-[#3C5A38]" : "text-[#3C5A38]"
+              }`}
             >
               Lành Care
             </span>
@@ -73,7 +82,7 @@ export default function Navbar() {
           </div>
         </motion.div>
 
-        {/* DESKTOP NAVIGATION - Tinh tế hơn */}
+        {/* DESKTOP NAVIGATION */}
         <nav className="hidden md:flex items-center gap-10">
           {navLinks.map((link, index) => (
             <motion.a
@@ -87,14 +96,17 @@ export default function Navbar() {
             </motion.a>
           ))}
 
-          <motion.button
+          {/* SỬA CHỮA: Chuyển Button thành thẻ A để hỗ trợ Tải APK */}
+          <motion.a
+            href="/downloads/LanhCare.apk"
+            download="LanhCare.apk"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-6 py-2.5 bg-primary text-white font-black text-xs uppercase tracking-widest rounded-full shadow-xl shadow-primary/20 hover:bg-[#7ABF68] transition-all"
+            className="flex items-center gap-2 px-6 py-2.5 bg-primary text-white font-black text-xs uppercase tracking-widest rounded-full shadow-xl shadow-primary/20 hover:bg-[#7ABF68] transition-all cursor-pointer"
           >
             <Smartphone size={16} />
             Tải App
-          </motion.button>
+          </motion.a>
         </nav>
 
         {/* MOBILE NAVIGATION */}
@@ -121,27 +133,34 @@ export default function Navbar() {
 
                 <div className="flex flex-col gap-4">
                   {navLinks.map((link, index) => (
-                    <a
-                      key={index}
-                      href={link.href}
-                      className="text-2xl font-black text-[#7A9173] hover:text-primary transition-colors py-2 border-b border-border/50"
-                    >
-                      {link.name}
-                    </a>
+                    // SỬA CHỮA: Bọc link trong SheetClose để tự động đóng Menu khi người dùng bấm
+                    <SheetClose asChild key={index}>
+                      <a
+                        href={link.href}
+                        className="text-2xl font-black text-[#7A9173] hover:text-primary transition-colors py-2 border-b border-border/50"
+                      >
+                        {link.name}
+                      </a>
+                    </SheetClose>
                   ))}
                 </div>
 
-                <button className="mt-8 flex items-center justify-center gap-3 px-6 py-5 bg-primary text-white font-black text-sm uppercase tracking-widest rounded-2xl shadow-2xl shadow-primary/30">
+                {/* SỬA CHỮA: Chuyển Button thành thẻ A để hỗ trợ Tải APK trên Mobile */}
+                <a
+                  href="/downloads/LanhCare.apk"
+                  download="LanhCare.apk"
+                  className="mt-8 flex items-center justify-center gap-3 px-6 py-5 bg-primary text-white font-black text-sm uppercase tracking-widest rounded-2xl shadow-2xl shadow-primary/30"
+                >
                   <Sparkles size={18} />
-                  Bắt đầu ngay
-                </button>
+                  Tải Lành Care
+                </a>
               </div>
             </SheetContent>
           </Sheet>
         </div>
       </div>
 
-      {/* THANH SCROLL PROGRESS - Sắc nét & Nổi bật */}
+      {/* THANH SCROLL PROGRESS */}
       <div className="absolute bottom-0 left-0 right-0 w-full h-[2px] bg-transparent">
         <Progress
           value={scrollProgress}
